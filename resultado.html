@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado Final</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+<div class="container">
+    <h1>Resultado Final</h1>
+
+    <div id="placar"></div>
+
+    <br>
+    <a href="index.html">
+        <button>Jogar Novamente</button>
+    </a>
+</div>
+
+<script>
+    let acertos = localStorage.getItem("acertos");
+    let erros = localStorage.getItem("erros");
+
+    document.getElementById("placar").innerHTML =
+        "<h2>✅ Acertos: " + acertos + "</h2>" +
+        "<h2>❌ Erros: " + erros + "</h2>";
+</script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>desafios do acerto</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    
+    <div class="container">
+
+            <h1>Área do Jogador</h1>
+
+            <input type="text" id="usuario" placeholder="Digite seu nome">
+            <br><br>
+            <input type="password" id="senha" placeholder="Digite sua senha">
+            <br><br>
+
+            <button onclick="criarConta()">Criar Conta</button>
+            <button onclick="login()">Entrar</button>
+
+            <div id="mensagemLogin"></div>
+
+    </div>
+
+
+
+
+    <div class="container">
+
+        <h1>Desafio do acertos</h1>
+
+        <p>
+            Bem-vindo ao desafio! Aqui você deverá responder corretamente
+            às perguntas propostas. Cada resposta certa soma pontos,
+            então pense com atenção antes de escolher.
+        </p>
+
+        <a href="pergunta1.html" onclick="iniciarJogo()" onclick="return verificarLogin()">
+            <button>Hora do desafio </button>
+        </a>
+
+
+
+    </div>
+
+    <div class="container">
+
+        <h1>Hora dos calculos</h1>
+
+        <p>
+            O desafio continua! Agora é hora de testar sua mente com cálculos.
+            Resolva as contas corretamente e prove que você domina a matemática.
+            Cada acerto soma pontos. Cada erro conta como aprendizado.
+            Está preparado para partir para os cálculos?
+        </p>
+
+        <a href="matematica1.html" onclick="iniciarJogo()" onclick="return verificarLogin()">
+            <button>Partiu calculos </button>
+        </a>
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        localStorage.setItem("acertos", 0);
+        localStorage.setItem("erros", 0);
+    </script>
+
+</body>
+
+</html>
