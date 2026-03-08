@@ -19,16 +19,18 @@ app.get("/", (req, res) => {
 
 app.post("/criarConta", (req,res) =>{
 
-    const {nome, senha} = requestAnimationFrame.body;
+    const {nome, senha} = req.body;
 
     const sql = "INSERT INTO usuario (nome, senha) VALUES (?, ?)";
 
     conexao.query(sql,[nome,senha], (erro,resultado) => {
 
-        if(erro){
+       if (erro) {
+            console.log(erro);
             res.send("ERRO AO CADASTRAR");
             return;
         }
+
         res.send("CONTA CRIADA COM SUCESSO");
 
     });

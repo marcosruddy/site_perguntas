@@ -14,5 +14,15 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "mysql2": "^3.19.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcosruddy/site_perguntas.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/marcosruddy/site_perguntas/issues"
+  },
+  "homepage": "https://github.com/marcosruddy/site_perguntas#readme"
 }

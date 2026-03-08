@@ -43,33 +43,45 @@ function criarConta() {
 
     if (usuario === "" || senha === "") {
         document.getElementById("mensagemLogin").innerHTML =
-            "<p style='color:red;'>Preencha todos os campos!</p>";
+        "<p style='color:red;'>Preencha todos os campos!</p>";
         return;
     }
- fetch("/criarConta", {
 
-    method: "POST",
+    fetch("/criarConta", {
 
-    headers: {
-    "Content-Type": "application/json"
-    },
+        method: "POST",
 
-    body: JSON.stringify({
-    nome: usuario,
-    senha: senha
-    })
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            nome: usuario,
+            senha: senha
+        })
 
     })
     .then(res => res.text())
     .then(data => {
 
-    document.getElementById("mensagemLogin").innerHTML =
-    "<p style='color:green;'>" + data + "</p>";
+        document.getElementById("mensagemLogin").innerHTML =
+        "<p style='color:green;'>" + data + "</p>";
+
+        // limpa os campos
+        document.getElementById("usuario").value = "";
+        document.getElementById("senha").value = "";
+
+    })
+    .catch(error => {
+
+        document.getElementById("mensagemLogin").innerHTML =
+        "<p style='color:red;'>Erro ao conectar com o servidor</p>";
+
+        console.error(error);
 
     });
 
 }
-
 
 function login() {
 
