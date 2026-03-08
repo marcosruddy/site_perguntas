@@ -46,12 +46,28 @@ function criarConta() {
             "<p style='color:red;'>Preencha todos os campos!</p>";
         return;
     }
+ fetch("/criarConta", {
 
-    localStorage.setItem("usuario", usuario);
-    localStorage.setItem("senha", senha);
+    method: "POST",
+
+    headers: {
+    "Content-Type": "application/json"
+    },
+
+    body: JSON.stringify({
+    nome: usuario,
+    senha: senha
+    })
+
+    })
+    .then(res => res.text())
+    .then(data => {
 
     document.getElementById("mensagemLogin").innerHTML =
-        "<p style='color:green;'>Conta criada com sucesso!</p>";
+    "<p style='color:green;'>" + data + "</p>";
+
+    });
+
 }
 
 
