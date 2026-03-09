@@ -85,25 +85,43 @@ function criarConta() {
 
 function login() {
 
-    const usuarioDigitado = document.getElementById("usuario").value;
-    const senhaDigitada = document.getElementById("senha").value;
+    const usuario = document.getElementById("usuario").value;
+    const senha = document.getElementById("senha").value;
 
-    const usuarioSalvo = localStorage.getItem("usuario");
-    const senhaSalva = localStorage.getItem("senha");
+    fetch("/login", {
 
-    if (usuarioDigitado === usuarioSalvo && senhaDigitada === senhaSalva) {
+        method: "POST",
 
-        localStorage.setItem("logado", "sim");
+        headers: {
+            "Content-Type": "application/json"
+        },
 
-        document.getElementById("mensagemLogin").innerHTML =
+        body: JSON.stringify({
+            nome: usuario,
+            senha: senha
+        })
+
+    })
+    .then(res => res.text())
+    .then(data => {
+
+        if (data === "LOGIN_OK") {
+
+            localStorage.setItem("logado", "sim");
+
+            document.getElementById("mensagemLogin").innerHTML =
             "<p style='color:green;'>Login realizado com sucesso!</p>";
 
-    } else {
-        document.getElementById("mensagemLogin").innerHTML =
-            "<p style='color:red;'>Usuário ou senha incorretos!</p>";
-    }
-}
+        } else {
 
+            document.getElementById("mensagemLogin").innerHTML =
+            "<p style='color:red;'>Usuário ou senha incorretos!</p>";
+
+        }
+
+    });
+
+}
 // area usada para a validação do login dessa forma pode nos deixar claro de que a pessoa esteja logado de maneira correta, dentro do site mostra que foi aceito para dar inicio ao jogo 
 
 function verificarLogin() {

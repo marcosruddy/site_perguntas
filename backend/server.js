@@ -36,6 +36,26 @@ app.post("/criarConta", (req,res) =>{
     });
 });
 
+app.post("/login", (req, res) => {
+    const {nome, senha} =  req.body;
+
+    const sql = "SELECT * FROM usuario WHERE nome = ? AND senha = ?";
+
+    conexao.query(sql, [nome, senha], (erro, resultado) => {
+
+        if (erro) {
+            console.log(erro);
+            res.send("ERRO");
+            return;
+        }
+        if (resultado.length > 0){
+            res.send("LOGIN_OK");
+        } else  {
+            res.send("LOGIN_ERRO");
+        }
+    });
+});
+
 
 app.listen(3000, () => {
     console.log("Servidor rodando  na porta 3000");
