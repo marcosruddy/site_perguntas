@@ -6,6 +6,8 @@ const conexao = require("./database/conexao");
 
 const app = express();
 
+const open = (...args) => import('open').then(mod => mod.default(...args));
+
 app.use(cors());
 app.use(express.json());
 
@@ -58,5 +60,8 @@ app.post("/login", (req, res) => {
 
 
 app.listen(3000, () => {
-    console.log("Servidor rodando  na porta 3000");
+    console.log("Servidor rodando na porta 3000");
+   
+
+    open("http://localhost:3000");
 });
